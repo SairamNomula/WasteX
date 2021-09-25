@@ -3,14 +3,15 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link
+    <!-- <link
       rel="stylesheet"
       href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
       integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN"
       crossorigin="anonymous"
-    />
+    /> -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="styles.css" />
-    <title>WasteX Admin Dashboard</title>
+    <title>WasteX User Dashboard</title>
   </head>
   <body id="body">
     <div class="container">
@@ -20,7 +21,7 @@
         </div>
         <div class="navbar__left">
           <!-- <a href="#">Customers</a> -->
-          <a class="active_link" href="#">Admin</a>
+          <a class="active_link" href="../index.html">User</a>
         </div>
         <!-- <div class="navbar__right">
           <a href="#">
@@ -43,34 +44,60 @@
           <div class="main__title">
             <img src="assets/WasteX logo.png" alt="" />
             <div class="main__greeting">
-              <h1>Hello Admin!</h1>
-              <p>Welcome to your admin dashboard</p>
-            </div>
+              <h1>Hello User!</h1>
+              <p>Welcome to your dashboard</p>
+              </div>
           </div>
 
           <!-- MAIN TITLE ENDS HERE -->
-
+          <div class="form">
+              
+            <form id="formRequest">
+              <Label>Request New Pickup</Label>
+              <br>
+              <select name="pickuptype">
+                <option value="Plastic">Plastic</option>
+                <option value="Metal">Metal</option>
+                <option value="E-waste">E-waste</option>
+                <option value="Paper">Paper</option>
+              </select>
+              <button class="btn" type="submit">Request Pickup</button>
+            </form>
+            </div>
           <!-- MAIN CARDS STARTS HERE -->
           <div class="main__cards">
             <div class="card">
               <i
-                class="fa fa-user-o fa-2x text-lightblue"
+                class="fas fa-laptop fa-2x text-lightblue"
                 aria-hidden="true"
               ></i>
               <div class="card_inner">
-                <p class="text-primary-p">Number of Customers</p>
-                <span class="font-bold text-title">57</span>
+                <p class="text-primary-p">Amount of e-waste</p>
+                <span id="e-waste" class="font-bold text-title"></span>
               </div>
             </div>
-
+            <div class="card">
+              <i class="fa fa-scroll fa-2x text-green" aria-hidden="true"></i>
+              <div class="card_inner">
+                <p class="text-primary-p">Amount of Paper Waste</p>
+                <span class="font-bold text-title" id="paper"></span>
+              </div>
+            </div>
+            <div class="card">
+              <i class="fas fa-tools fa-2x text-lightblue" aria-hidden="true"></i>
+              <div class="card_inner">
+                <p class="text-primary-p">Amount of metal waste</p>
+                <span class="font-bold text-title" id="metal"></span>
+              </div>
+            </div>
             <div class="card">
               <i
-                class="fa fa-thumbs-up fa-2x text-green"
+                class="fas fa-wine-bottle fa-2x text-green"
                 aria-hidden="true"
               ></i>
               <div class="card_inner">
-                <p class="text-primary-p">Number of Likes</p>
-                <span class="font-bold text-title">45</span>
+                <p class="text-primary-p">Amount of plastic waste</p>
+                <span class="font-bold text-title" id="plastic"></span>
               </div>
             </div>
           </div>
@@ -81,10 +108,10 @@
             <div class="charts__left">
               <div class="charts__left__title">
                 <div>
-                  <h1>Daily Reports</h1>
-                  <p>Khammam, India</p>
+                  <h1>Monthly Reports</h1>
+                  <!-- <p>Khammam, India</p> -->
                 </div>
-                <i class="fa fa-usd" aria-hidden="true"></i>
+                <i id="weight"></i>
               </div>
               <div id="apex1"></div>
             </div>
@@ -92,31 +119,31 @@
             <div class="charts__right">
               <div class="charts__right__title">
                 <div>
-                  <h1>Stats Reports</h1>
-                  <p>Khammam, India</p>
+                  <h1>Points Report</h1>
+                  <!-- <p>Khammam, India</p> -->
                 </div>
-                <i class="fa fa-usd" aria-hidden="true"></i>
+                <i id="totalPoints"></i>
               </div>
 
               <div class="charts__right__cards">
                 <div class="card1">
-                  <h1>Income</h1>
-                  <p id="income"></p>
+                  <h1>Paper</h1>
+                  <p id="paperPoints"></p>
                 </div>
 
                 <div class="card2">
-                  <h1>Sales</h1>
-                  <p id="sales"></p>
+                  <h1>Plastic</h1>
+                  <p id="plasticPoints"></p>
                 </div>
 
                 <div class="card3">
-                  <h1>Users</h1>
-                  <p>57</p>
+                  <h1>Metal</h1>
+                  <p id="metalPoints"></p>
                 </div>
 
                 <div class="card3">
-                    <h1>Exchanges</h1>
-                    <p>50</p>
+                    <h1>e-waste</h1>
+                    <p id="e-wastePoints"></p>
                   </div>
 
               </div>
@@ -145,19 +172,19 @@
             <i class="fa fa-home"></i>
             <a href="#">Dashboard</a>
           </div>
-          <h2>MNG</h2>
-          <div class="sidebar__link">
+          <!-- <h2>MNG</h2> -->
+          <!-- <div class="sidebar__link">
             <i class="fa fa-user-secret" aria-hidden="true"></i>
             <a href="#">Admin Management</a>
-          </div>
+          </div> -->
           <div class="sidebar__link">
             <i class="fa fa-wrench"></i>
-            <a href="#">Employee Management</a>
+            <a href="#">Settings</a>
           </div>
-          <div class="sidebar__link">
+          <!-- <div class="sidebar__link">
             <i class="fa fa-archive"></i>
             <a href="#">Warehouse</a>
-          </div>
+          </div> -->
           
           <div class="sidebar__logout">
             <i class="fa fa-power-off"></i>
@@ -168,5 +195,6 @@
     </div>
     <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
     <script src="script.js"></script>
+    
   </body>
 </html>

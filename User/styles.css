@@ -157,14 +157,47 @@ main {
   font-weight: 700;
   color: #a5aaad;
 }
-
+form label{
+  
+  font-size: 14px;
+  font-weight: 700;
+  color: #a5aaad;
+}
 .main__cards {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   gap: 30px;
   margin: 20px 0;
 }
-
+.form{
+  width: 50%;
+  float: flex-end;
+  margin-top: 2.5%;
+}
+select{
+  border-radius: 5px;
+  background: #ffffff;
+  padding: 2%;
+  margin-top: 2.5%;
+  margin-bottom: 2.5%;
+  display: inline-block;
+  font-size: 15px;
+  box-shadow: 5px 5px 13px #ededed, -5px -5px 13px #ffffff;
+  min-width: 50%;
+}
+form button{
+  border: none;
+  color: white;
+  padding: 2.2%;
+  min-width: 25%;
+  margin-left: 2%;
+  text-align: center;
+  text-decoration: none;
+  border-radius: 5px;
+  display: inline-block;
+  font-size: 15px;
+  background-color: #265acc;
+}
 .card {
   display: flex;
   flex-direction: column;

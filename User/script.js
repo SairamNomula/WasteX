@@ -2,16 +2,20 @@
 var options = {
     series: [
       {
-        name: "Net Profit",
-        data: [44, 55, 57, 56, 61, 58, 63, 60, 66],
+        name: "Paper",
+        data: [10, 12, 8, 9, 7.5, 11, 12, 10, 9],
       },
       {
-        name: "Revenue",
-        data: [76, 85, 101, 98, 87, 105, 91, 114, 94],
+        name: "Metal",
+        data: [5, 4, 6, 3, 3, 5, 4, 4, 5],
       },
       {
-        name: "Free Cash Flow",
-        data: [35, 41, 36, 26, 45, 48, 52, 53, 41],
+      name: "Plastic",
+      data: [6, 4, 4, 3, 4, 5, 6, 7, 2],
+    },
+    {
+      name: "e-waste",
+      data: [1, 2, 0.5, 2, 3, 1, 2, 3, 1],
       },
     ],
     chart: {
@@ -41,7 +45,7 @@ var options = {
     },
     yaxis: {
       title: {
-        text: "$",
+        text: "Kg",
       },
     },
     fill: {
@@ -50,7 +54,7 @@ var options = {
     tooltip: {
       y: {
         formatter: function (val) {
-          return "$ " + val;
+          return val + "Kg";
         },
       },
     },
@@ -79,8 +83,26 @@ var options = {
     }
   }
 
-const reducer = (previousVal, currentVal) => previousVal + currentVal;
-console.log(options.series[0].data.reduce(reducer));
 
-document.getElementById('income').innerHTML=options.series[0].data.reduce(reducer)
-document.getElementById('sales').innerHTML=options.series[1].data.reduce(reducer)
+
+
+const reducer = (previousVal, currentVal) => previousVal + currentVal;
+const sumPaper = options.series[0].data.reduce(reducer);
+const sumMetal = options.series[1].data.reduce(reducer);
+const sumPlastic = options.series[2].data.reduce(reducer);
+const sumeWaste = options.series[3].data.reduce(reducer);
+document.getElementById('totalPoints').innerHTML = sumPaper + sumMetal * 3 + sumPlastic * 2 + sumeWaste * 4
+document.getElementById('paperPoints').innerHTML = sumPaper;
+document.getElementById('plasticPoints').innerHTML = sumPlastic * 2;
+document.getElementById('metalPoints').innerHTML = sumMetal * 3;
+document.getElementById('e-wastePoints').innerHTML = sumeWaste * 4;
+document.getElementById('paper').innerHTML = sumPaper + "kg";
+document.getElementById('metal').innerHTML = sumMetal + "kg";
+document.getElementById('plastic').innerHTML = sumPlastic + "kg";
+document.getElementById('e-waste').innerHTML = sumeWaste + "kg";
+document.getElementById('weight').innerHTML = (sumPaper + sumMetal + sumPlastic + sumeWaste) + " kg";
+
+document.getElementById('formRequest').onsubmit = (function (e) {
+  e.preventDefault();
+  alert("Pickup Registered for " + e.target[0].value + " ,our executive will contact you for pickup.")
+})
