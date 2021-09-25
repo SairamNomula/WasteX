@@ -41,7 +41,7 @@ var options = {
     },
     yaxis: {
       title: {
-        text: "$ (thousands)",
+        text: "$",
       },
     },
     fill: {
@@ -50,7 +50,7 @@ var options = {
     tooltip: {
       y: {
         formatter: function (val) {
-          return "$ " + val + " thousands";
+          return "$ " + val;
         },
       },
     },
@@ -78,3 +78,9 @@ var options = {
       sidebarOpen = false;
     }
   }
+
+const reducer = (previousVal, currentVal) => previousVal + currentVal;
+console.log(options.series[0].data.reduce(reducer));
+
+document.getElementById('income').innerHTML=options.series[0].data.reduce(reducer)
+document.getElementById('sales').innerHTML=options.series[1].data.reduce(reducer)
